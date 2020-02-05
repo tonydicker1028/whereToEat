@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 
-import Restaurants from '../restaurants/Restaurants';
+import Restaurant from '../restaurants/Restaurant';
 
 import RestaurantContext from '../../context/restaurant/restaurantContext';
 
@@ -13,7 +13,7 @@ const Home = () => {
 
     return (
         <div>
-            <Restaurants />
+            <Restaurant />
         </div>
     );
 };

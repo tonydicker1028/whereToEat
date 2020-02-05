@@ -9,9 +9,7 @@ const Restaurants = () => {
 
     return (
         <>
-            {restaurants.map(restaurant => (
-                <div>{restaurant.name}</div>
-            ))}
+            <div>{restaurants.length > 0 && restaurants[0].name}</div>
         </>
     );
 };

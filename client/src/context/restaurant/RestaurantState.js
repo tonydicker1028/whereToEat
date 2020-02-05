@@ -18,6 +18,7 @@ const RestaurantState = props => {
         const res = await axios.get(restaurantsEndPoint);
 
         dispatch({ type: GET_RESTAURANTS, payload: res.data });
+        console.log(res.data.results);
     };
 
     return (
