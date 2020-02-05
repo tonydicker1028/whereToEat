@@ -1,2 +1,3 @@
-# what-to-eat
-What To Eat Web App
+# Where To Eat
+
+Where To Eat Web App
