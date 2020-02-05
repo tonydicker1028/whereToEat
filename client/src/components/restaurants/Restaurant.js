@@ -9,7 +9,17 @@ const Restaurants = () => {
 
     return (
         <>
-            <div>{restaurants.length > 0 && restaurants[0].name}</div>
+            <div>
+                {restaurants.length > 0 && (
+                    <>
+                        <h1>{restaurants[0].name}</h1>
+                        <p>{restaurants[0].price_level}</p>
+                        <p>{restaurants[0].rating}</p>
+                        <p>{restaurants[0].user_ratings_total}</p>
+                        <p>{restaurants[0].vicinity}</p>
+                    </>
+                )}
+            </div>
         </>
     );
 };
