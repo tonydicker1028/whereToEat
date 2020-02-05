@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 
 import RestaurantContext from '../../context/restaurant/restaurantContext';
 
-const Restaurants = () => {
+const Restaurant = () => {
     const restaurantContext = useContext(RestaurantContext);
 
     const { restaurants } = restaurantContext;
 
     return (
         <>
-            <div>
+            <div className='card'>
                 {restaurants.length > 0 && (
                     <>
                         <h1>{restaurants[0].name}</h1>
@@ -24,4 +24,4 @@ const Restaurants = () => {
     );
 };
 
-export default Restaurants;
+export default Restaurant;
