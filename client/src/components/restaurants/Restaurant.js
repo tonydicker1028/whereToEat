@@ -7,7 +7,7 @@ import RestaurantContext from '../../context/restaurant/restaurantContext';
 const Restaurant = () => {
     const restaurantContext = useContext(RestaurantContext);
 
-    const { restaurants, photoRefs } = restaurantContext;
+    const { restaurants } = restaurantContext;
 
     return (
         <div className='container card mt-5 py-2'>
@@ -15,7 +15,7 @@ const Restaurant = () => {
                 <>
                     <h1 className='text-center'>{restaurants[0].name}</h1>
                     <img
-                        src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoRefs[0]}&key=${process.env.REACT_APP_API_KEY}`}
+                        src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurants[0].photos[0].photo_reference}&key=${process.env.REACT_APP_API_KEY}`}
                         className='mx-auto d-block'
                     />
 
