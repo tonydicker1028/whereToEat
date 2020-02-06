@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 
 import RestaurantButtons from './RestaurantButtons';
 
@@ -60,6 +61,11 @@ const Restaurant = () => {
             <RestaurantButtons />
         </div>
     );
+};
+
+Restaurant.propTypes = {
+    restaurants: PropTypes.array,
+    getRestaurantDetails: PropTypes.func
 };
 
 export default Restaurant;

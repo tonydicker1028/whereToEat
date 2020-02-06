@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 
 import RestaurantContext from '../../context/restaurant/restaurantContext';
+import Restaurant from './Restaurant';
 
 const RestaurantButtons = () => {
     const restaurantContext = useContext(RestaurantContext);
@@ -19,6 +21,11 @@ const RestaurantButtons = () => {
             </button>
         </div>
     );
+};
+
+RestaurantButtons.propTypes = {
+    restaurants: PropTypes.array,
+    removeRestaurant: PropTypes.func
 };
 
 export default RestaurantButtons;
