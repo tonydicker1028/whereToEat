@@ -14,12 +14,24 @@ const RestaurantState = props => {
 
     const restaurantsEndPoint = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.058174,-121.315308&radius=1500&type=restaurant&key=${process.env.REACT_APP_API_KEY}`;
 
+    // Shuffles the array of restaurants for randomness
+    const shuffleArray = arr => {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    };
+
     // Get Restaurants
     const getRestaurants = async () => {
         const res = await axios.get(restaurantsEndPoint);
 
-        dispatch({ type: GET_RESTAURANTS, payload: res.data });
-        console.log(res.data.results);
+        let resultsArr = res.data.results;
+
+        const shuffledArr = shuffleArray(resultsArr);
+
+        dispatch({ type: GET_RESTAURANTS, payload: shuffledArr });
     };
 
     return (

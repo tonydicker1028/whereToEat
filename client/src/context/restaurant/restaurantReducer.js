@@ -5,9 +5,9 @@ export default (state, action) => {
         case GET_RESTAURANTS:
             return {
                 ...state,
-                restaurants: action.payload.results,
-                photoRefs: action.payload.results.map(
-                    result => result.photos[0].photo_reference
+                restaurants: action.payload,
+                photoRefs: action.payload.map(
+                    ele => ele.photos[0].photo_reference
                 )
             };
         default:
