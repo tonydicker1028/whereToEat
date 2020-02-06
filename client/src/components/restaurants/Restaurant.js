@@ -5,11 +5,16 @@ import RestaurantContext from '../../context/restaurant/restaurantContext';
 const Restaurant = () => {
     const restaurantContext = useContext(RestaurantContext);
 
-    const { restaurants } = restaurantContext;
+    const { restaurants, photoRefs } = restaurantContext;
 
     return (
         <>
             <div className='card'>
+                {photoRefs.length > 0 && (
+                    <img
+                        src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoRefs[0]}&key=${process.env.REACT_APP_API_KEY}`}
+                    />
+                )}
                 {restaurants.length > 0 && (
                     <>
                         <h1>{restaurants[0].name}</h1>
