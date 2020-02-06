@@ -6,7 +6,8 @@ import { GET_RESTAURANTS } from '../types';
 
 const RestaurantState = props => {
     const initialState = {
-        restaurants: []
+        restaurants: [],
+        photoRefs: []
     };
 
     const [state, dispatch] = useReducer(restaurantReducer, initialState);
@@ -23,7 +24,11 @@ const RestaurantState = props => {
 
     return (
         <RestaurantContext.Provider
-            value={{ restaurants: state.restaurants, getRestaurants }}
+            value={{
+                restaurants: state.restaurants,
+                photoRefs: state.photoRefs,
+                getRestaurants
+            }}
         >
             {props.children}
         </RestaurantContext.Provider>
