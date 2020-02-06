@@ -8,7 +8,7 @@ const Restaurant = () => {
     const { restaurants, photoRefs } = restaurantContext;
 
     return (
-        <div>
+        <div className='container card mt-5 py-2'>
             {restaurants.length > 0 && (
                 <>
                     <h1 className='text-center'>{restaurants[0].name}</h1>
@@ -17,24 +17,31 @@ const Restaurant = () => {
                         className='mx-auto d-block'
                     />
 
-                    <div className='text-center'>Address</div>
-                    <p className='text-center'>{restaurants[0].vicinity}</p>
-                    <div className='card'>
-                        <div className='row'></div>
+                    <div className='my-2'>
+                        <div className='text-center font-weight-bold'>
+                            Address
+                        </div>
+                        <p className='text-center'>{restaurants[0].vicinity}</p>
+                    </div>
 
-                        <div className='row row-cols-3'>
-                            <div className='col text-center'>Price</div>
-                            <div className='col text-center'>Rating</div>
-                            <div className='col text-center'>Total Reviews</div>
-                            <div className='col text-center'>
-                                {restaurants[0].price_level === 2 && '$$'}
-                            </div>
-                            <div className='col text-center'>
-                                {restaurants[0].rating} / 5
-                            </div>
-                            <div className='col text-center'>
-                                {restaurants[0].user_ratings_total}
-                            </div>
+                    <div className='row row-cols-3'>
+                        <div className='col text-center font-weight-bold'>
+                            Price
+                        </div>
+                        <div className='col text-center font-weight-bold'>
+                            Rating
+                        </div>
+                        <div className='col text-center font-weight-bold'>
+                            Total Reviews
+                        </div>
+                        <div className='col text-center'>
+                            {restaurants[0].price_level === 2 && '$$'}
+                        </div>
+                        <div className='col text-center'>
+                            {restaurants[0].rating} / 5
+                        </div>
+                        <div className='col text-center'>
+                            {restaurants[0].user_ratings_total}
                         </div>
                     </div>
                 </>

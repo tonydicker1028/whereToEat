@@ -12,7 +12,7 @@ const Home = () => {
     }, []);
 
     return (
-        <div className='container'>
+        <div>
             <Restaurant />
         </div>
     );
