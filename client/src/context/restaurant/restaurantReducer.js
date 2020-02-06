@@ -1,4 +1,8 @@
-import { GET_RESTAURANTS, REMOVE_RESTAURANT } from '../types';
+import {
+    GET_RESTAURANTS,
+    REMOVE_RESTAURANT,
+    GET_RESTAURANT_DETAIL
+} from '../types';
 
 export default (state, action) => {
     switch (action.type) {
@@ -13,6 +17,11 @@ export default (state, action) => {
                 restaurants: state.restaurants.filter(
                     restaurant => restaurant.name != action.payload[0].name
                 )
+            };
+        case GET_RESTAURANT_DETAIL:
+            return {
+                ...state,
+                restaurantDetails: action.payload
             };
         default:
             return state;

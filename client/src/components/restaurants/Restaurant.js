@@ -7,7 +7,11 @@ import RestaurantContext from '../../context/restaurant/restaurantContext';
 const Restaurant = () => {
     const restaurantContext = useContext(RestaurantContext);
 
-    const { restaurants } = restaurantContext;
+    const { restaurants, getRestaurantDetails } = restaurantContext;
+
+    if (restaurants.length > 0) {
+        getRestaurantDetails(restaurants[0].place_id);
+    }
 
     return (
         <div className='container card mt-5 py-2'>

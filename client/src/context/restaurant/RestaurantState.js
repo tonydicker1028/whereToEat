@@ -2,11 +2,16 @@ import React, { useReducer } from 'react';
 import axios from 'axios';
 import RestaurantContext from './restaurantContext';
 import restaurantReducer from './restaurantReducer';
-import { GET_RESTAURANTS, REMOVE_RESTAURANT } from '../types';
+import {
+    GET_RESTAURANTS,
+    REMOVE_RESTAURANT,
+    GET_RESTAURANT_DETAIL
+} from '../types';
 
 const RestaurantState = props => {
     const initialState = {
-        restaurants: []
+        restaurants: [],
+        restaurantDetails: {}
     };
 
     const [state, dispatch] = useReducer(restaurantReducer, initialState);
@@ -33,6 +38,15 @@ const RestaurantState = props => {
         dispatch({ type: GET_RESTAURANTS, payload: shuffledArr });
     };
 
+    // Get Restaurant Details
+    const getRestaurantDetails = async place_id => {
+        const res = await axios.get(
+            `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&fields=website,formatted_phone_number,formatted_address&key=${process.env.REACT_APP_API_KEY}`
+        );
+
+        dispatch({ type: GET_RESTAURANT_DETAIL, payload: res.data.result });
+    };
+
     // Remove a restaurant from the array
     const removeRestaurant = restaurants => {
         dispatch({ type: REMOVE_RESTAURANT, payload: restaurants });
@@ -41,8 +55,10 @@ const RestaurantState = props => {
         <RestaurantContext.Provider
             value={{
                 restaurants: state.restaurants,
+                restaurantDetails: state.restaurantDetails,
                 getRestaurants,
-                removeRestaurant
+                removeRestaurant,
+                getRestaurantDetails
             }}
         >
             {props.children}
