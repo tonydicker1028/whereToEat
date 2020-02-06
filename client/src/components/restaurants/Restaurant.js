@@ -37,7 +37,12 @@ const Restaurant = () => {
                             Total Reviews
                         </div>
                         <div className='col text-center'>
-                            {restaurants[0].price_level === 2 && '$$'}
+                            {restaurants[0].price_level === 0 && '$'}
+                            {restaurants[0].price_level === 1 && '$$'}
+                            {restaurants[0].price_level === 2 && '$$$'}
+                            {restaurants[0].price_level === 3 && '$$$$'}
+                            {restaurants[0].price_level === 4 && '$$$$$'}
+                            {!restaurants[0].price_level && 'N/A'}
                         </div>
                         <div className='col text-center'>
                             {restaurants[0].rating} / 5

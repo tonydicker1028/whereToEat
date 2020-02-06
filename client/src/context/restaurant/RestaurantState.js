@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import axios from 'axios';
 import RestaurantContext from './restaurantContext';
 import restaurantReducer from './restaurantReducer';
-import { GET_RESTAURANTS } from '../types';
+import { GET_RESTAURANTS, REMOVE_RESTAURANT } from '../types';
 
 const RestaurantState = props => {
     const initialState = {
@@ -34,12 +34,17 @@ const RestaurantState = props => {
         dispatch({ type: GET_RESTAURANTS, payload: shuffledArr });
     };
 
+    // Remove a restaurant from the array
+    const removeRestaurant = restaurants => {
+        dispatch({ type: REMOVE_RESTAURANT, payload: restaurants });
+    };
     return (
         <RestaurantContext.Provider
             value={{
                 restaurants: state.restaurants,
                 photoRefs: state.photoRefs,
-                getRestaurants
+                getRestaurants,
+                removeRestaurant
             }}
         >
             {props.children}
