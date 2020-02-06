@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 
+import RestaurantButtons from './RestaurantButtons';
+
 import RestaurantContext from '../../context/restaurant/restaurantContext';
 
 const Restaurant = () => {
@@ -46,6 +48,7 @@ const Restaurant = () => {
                     </div>
                 </>
             )}
+            <RestaurantButtons />
         </div>
     );
 };
