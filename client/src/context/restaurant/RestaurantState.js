@@ -11,7 +11,8 @@ import {
 const RestaurantState = props => {
     const initialState = {
         restaurants: [],
-        restaurantDetails: {}
+        restaurantDetails: {},
+        loading: true
     };
 
     const [state, dispatch] = useReducer(restaurantReducer, initialState);
@@ -56,6 +57,7 @@ const RestaurantState = props => {
             value={{
                 restaurants: state.restaurants,
                 restaurantDetails: state.restaurantDetails,
+                loading: state.loading,
                 getRestaurants,
                 removeRestaurant,
                 getRestaurantDetails

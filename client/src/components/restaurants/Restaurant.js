@@ -3,20 +3,30 @@ import PropTypes from 'prop-types';
 
 import RestaurantButtons from './RestaurantButtons';
 import RestaurantDetails from './RestaurantDetails';
+import NoRestaurants from './NoRestaurants';
+import Spinner from '../layout/Spinner';
 
 import RestaurantContext from '../../context/restaurant/restaurantContext';
 
 const Restaurant = () => {
     const restaurantContext = useContext(RestaurantContext);
 
-    const { restaurants, getRestaurantDetails } = restaurantContext;
+    const { restaurants, getRestaurantDetails, loading } = restaurantContext;
 
     if (restaurants.length > 0) {
         getRestaurantDetails(restaurants[0].place_id);
     }
 
+    if (loading) {
+        return <Spinner />;
+    }
+
+    if (restaurants.length === 0 && !loading) {
+        return <NoRestaurants />;
+    }
+
     return (
-        <div className='container card mt-5 py-2 restaurant-normal'>
+        <>
             <div id='restaurant-overlay'>
                 <div id='overlay-text'>PASSED</div>
             </div>
@@ -32,7 +42,7 @@ const Restaurant = () => {
             )}
             <RestaurantDetails />
             <RestaurantButtons />
-        </div>
+        </>
     );
 };
 

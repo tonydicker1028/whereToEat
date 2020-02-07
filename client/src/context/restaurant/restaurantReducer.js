@@ -9,7 +9,8 @@ export default (state, action) => {
         case GET_RESTAURANTS:
             return {
                 ...state,
-                restaurants: action.payload
+                restaurants: action.payload,
+                loading: false
             };
         case REMOVE_RESTAURANT:
             return {
@@ -21,7 +22,8 @@ export default (state, action) => {
         case GET_RESTAURANT_DETAIL:
             return {
                 ...state,
-                restaurantDetails: action.payload
+                restaurantDetails: action.payload,
+                loading: false
             };
         default:
             return state;

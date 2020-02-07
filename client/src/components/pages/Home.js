@@ -13,7 +13,7 @@ const Home = () => {
     }, []);
 
     return (
-        <div>
+        <div className='container card mt-5 py-2 restaurant-normal'>
             <Restaurant />
         </div>
     );
