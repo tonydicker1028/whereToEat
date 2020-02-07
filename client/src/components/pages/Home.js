@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 
 import Restaurant from '../restaurants/Restaurant';
 
@@ -6,9 +6,6 @@ import RestaurantContext from '../../context/restaurant/restaurantContext';
 
 const Home = () => {
     const restaurantContext = useContext(RestaurantContext);
-
-    const [latLong, setLatLong] = useState();
-    const [waitGeolocation, setWaitGeolocation] = useState(true);
 
     // Gets users lat/long and restaurants nearby
     const getLocation = () => {

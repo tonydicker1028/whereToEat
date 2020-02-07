@@ -6,6 +6,7 @@ const NoRestaurants = () => {
             <h1 className='text-center text-danger'>OUT OF RESTAURANTS</h1>
             <div className='text-center'>
                 <iframe
+                    title='Hungry Man'
                     src='https://giphy.com/embed/CDpAmfo9dbOyA'
                     width='480'
                     height='360'
