@@ -28,7 +28,7 @@ const Restaurant = () => {
     return (
         <>
             <div id='restaurant-overlay'>
-                <div id='overlay-text'>PASSED</div>
+                <div id='overlay-text'>PASS</div>
             </div>
             {restaurants.length > 0 && (
                 <>
