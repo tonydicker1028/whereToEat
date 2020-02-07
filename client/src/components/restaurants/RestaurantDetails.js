@@ -28,7 +28,11 @@ const RestaurantDetails = () => {
                             {restaurantDetails.formatted_phone_number}
                         </div>
                         <div className='col text-center'>
-                            <a href={restaurantDetails.website} target='_blank'>
+                            <a
+                                href={restaurantDetails.website}
+                                target='_blank'
+                                rel='noopener noreferrer'
+                            >
                                 {restaurantDetails.website}
                             </a>
                         </div>

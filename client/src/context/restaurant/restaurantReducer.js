@@ -15,7 +15,7 @@ export default (state, action) => {
             return {
                 ...state,
                 restaurants: state.restaurants.filter(
-                    restaurant => restaurant.name != action.payload[0].name
+                    restaurant => restaurant.name !== action.payload[0].name
                 )
             };
         case GET_RESTAURANT_DETAIL:

@@ -9,6 +9,7 @@ const Home = () => {
 
     useEffect(() => {
         restaurantContext.getRestaurants();
+        // eslint-disable-next-line
     }, []);
 
     return (

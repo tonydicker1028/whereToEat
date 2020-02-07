@@ -26,6 +26,7 @@ const Restaurant = () => {
                     <img
                         src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photoreference=${restaurants[0].photos[0].photo_reference}&key=${process.env.REACT_APP_API_KEY}`}
                         className='mx-auto d-block restaurantImg'
+                        alt='the current restaurant'
                     />
                 </>
             )}
