@@ -32,7 +32,8 @@ const RestaurantButtons = () => {
     // If user passes on restaurant then load next one
     const onPass = () => {
         cardOverlay();
-        removeRestaurant(restaurants);
+
+        setTimeout(() => removeRestaurant(restaurants), 500);
     };
 
     return (
