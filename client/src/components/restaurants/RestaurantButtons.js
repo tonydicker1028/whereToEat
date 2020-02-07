@@ -12,7 +12,9 @@ const RestaurantButtons = () => {
     const cardOverlay = () => {
         const overlay = document.getElementById('restaurant-overlay');
         const overlayText = document.getElementById('overlay-text');
+        const restaurant = document.getElementById('restaurant-normal');
         overlay.style.height = '100%';
+        restaurant.style.border = 'none';
 
         setTimeout(() => {
             overlayText.style.display = 'initial';

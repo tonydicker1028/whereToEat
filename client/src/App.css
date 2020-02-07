@@ -9,7 +9,7 @@
     border: 1px solid #000;
 }
 
-.restaurant-normal {
+#restaurant-normal {
     position: relative;
 }
 
@@ -24,6 +24,7 @@
     background: #d9534f;
     transition: 0.5s ease;
     z-index: 2;
+    border-radius: 0.1rem;
 }
 
 #overlay-text {

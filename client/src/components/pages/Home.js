@@ -13,7 +13,7 @@ const Home = () => {
     }, []);
 
     return (
-        <div className='container card mt-5 py-2 restaurant-normal'>
+        <div className='container card mt-5 py-2' id='restaurant-normal'>
             <Restaurant />
         </div>
     );
