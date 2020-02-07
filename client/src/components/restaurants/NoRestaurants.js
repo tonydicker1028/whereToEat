@@ -10,7 +10,7 @@ const NoRestaurants = () => {
                     width='480'
                     height='360'
                     frameBorder='0'
-                    class='giphy-embed'
+                    className='giphy-embed'
                     allowFullScreen
                 ></iframe>
                 <p>

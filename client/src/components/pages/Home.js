@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 
 import Restaurant from '../restaurants/Restaurant';
 
@@ -7,8 +7,23 @@ import RestaurantContext from '../../context/restaurant/restaurantContext';
 const Home = () => {
     const restaurantContext = useContext(RestaurantContext);
 
+    const [latLong, setLatLong] = useState();
+    const [waitGeolocation, setWaitGeolocation] = useState(true);
+
+    // Gets users lat/long and restaurants nearby
+    const getLocation = () => {
+        let latLong;
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                latLong = `${position.coords.latitude},${position.coords.longitude}`;
+                restaurantContext.getRestaurants(latLong);
+            });
+        }
+    };
+
     useEffect(() => {
-        restaurantContext.getRestaurants();
+        getLocation();
+
         // eslint-disable-next-line
     }, []);
 
