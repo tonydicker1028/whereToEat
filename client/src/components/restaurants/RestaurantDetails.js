@@ -8,7 +8,7 @@ const RestaurantDetails = () => {
     const { restaurantDetails } = restaurantContext;
 
     return (
-        <div className='card my-5'>
+        <div className='card my-4'>
             <div className='row row-cols-3'>
                 {restaurantDetails != null && (
                     <>

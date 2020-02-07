@@ -16,7 +16,10 @@ const Restaurant = () => {
     }
 
     return (
-        <div className='container card mt-5 py-2'>
+        <div className='container card mt-5 py-2 restaurant-normal'>
+            <div id='restaurant-overlay'>
+                <div id='overlay-text'>PASSED</div>
+            </div>
             {restaurants.length > 0 && (
                 <>
                     <h1 className='text-center'>{restaurants[0].name}</h1>
