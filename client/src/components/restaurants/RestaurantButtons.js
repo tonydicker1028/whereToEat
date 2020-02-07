@@ -13,7 +13,10 @@ const RestaurantButtons = () => {
         const overlay = document.getElementById('restaurant-overlay');
         const overlayText = document.getElementById('overlay-text');
         overlay.style.height = '100%';
-        overlayText.style.display = 'initial';
+
+        setTimeout(() => {
+            overlayText.style.display = 'initial';
+        }, 100);
 
         setTimeout(() => {
             overlay.style.height = '0';
