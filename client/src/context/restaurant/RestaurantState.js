@@ -41,7 +41,7 @@ const RestaurantState = props => {
     // Get Restaurant Details
     const getRestaurantDetails = async place_id => {
         const res = await axios.get(
-            `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&fields=website,formatted_phone_number,formatted_address&key=${process.env.REACT_APP_API_KEY}`
+            `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&fields=website,formatted_phone_number,formatted_address,price_level,rating,user_ratings_total&key=${process.env.REACT_APP_API_KEY}`
         );
 
         dispatch({ type: GET_RESTAURANT_DETAIL, payload: res.data.result });
