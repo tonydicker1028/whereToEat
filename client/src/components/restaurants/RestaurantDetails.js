@@ -25,13 +25,17 @@ const RestaurantDetails = () => {
                         <div className='col text-center'>
                             <div className='font-weight-bold'>Website</div>
                             <div>
-                                <a
-                                    href={restaurantDetails.website}
-                                    target='_blank'
-                                    rel='noopener noreferrer'
-                                >
-                                    {restaurantDetails.website}
-                                </a>
+                                {restaurantDetails.website ? (
+                                    <a
+                                        href={restaurantDetails.website}
+                                        target='_blank'
+                                        rel='noopener noreferrer'
+                                    >
+                                        {restaurantDetails.website}
+                                    </a>
+                                ) : (
+                                    'N/A'
+                                )}
                             </div>
                         </div>
                     </div>
