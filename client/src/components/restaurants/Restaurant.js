@@ -4,26 +4,16 @@ import PropTypes from 'prop-types';
 import RestaurantButtons from './RestaurantButtons';
 import RestaurantDetails from './RestaurantDetails';
 import NoRestaurants from './NoRestaurants';
-import Spinner from '../layout/Spinner';
 
 import RestaurantContext from '../../context/restaurant/restaurantContext';
 
 const Restaurant = () => {
     const restaurantContext = useContext(RestaurantContext);
 
-    const {
-        restaurants,
-        getRestaurantDetails,
-        loading,
-        allowLocation
-    } = restaurantContext;
+    const { restaurants, getRestaurantDetails, loading } = restaurantContext;
 
     if (restaurants.length > 0) {
         getRestaurantDetails(restaurants[0].place_id);
-    }
-
-    if (loading && allowLocation) {
-        return <Spinner />;
     }
 
     if (restaurants.length === 0 && !loading) {

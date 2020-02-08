@@ -1,4 +1,5 @@
 import React from 'react';
+import Spinner from './Spinner';
 
 const LocationError = () => {
     return (
@@ -7,6 +8,7 @@ const LocationError = () => {
                 Please allow this site to access your location to view nearby
                 restaurants.
             </h1>
+            <Spinner />
         </div>
     );
 };
