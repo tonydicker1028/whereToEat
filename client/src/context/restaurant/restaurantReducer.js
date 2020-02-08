@@ -9,7 +9,7 @@ export default (state, action) => {
         case GET_RESTAURANTS:
             return {
                 ...state,
-                restaurants: action.payload[0],
+                restaurants: [...state.restaurants, ...action.payload[0]],
                 nextPageToken: action.payload[1],
                 loading: false,
                 allowLocation: true

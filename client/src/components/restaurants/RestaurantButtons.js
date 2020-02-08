@@ -6,7 +6,11 @@ import RestaurantContext from '../../context/restaurant/restaurantContext';
 const RestaurantButtons = () => {
     const restaurantContext = useContext(RestaurantContext);
 
-    const { restaurants, removeRestaurant } = restaurantContext;
+    const {
+        restaurants,
+        removeRestaurant,
+        getNextRestaurants
+    } = restaurantContext;
 
     // Adds an transition overlay to the card
     const cardOverlay = () => {
@@ -31,6 +35,7 @@ const RestaurantButtons = () => {
 
     // If user passes on restaurant then load next one
     const onPass = () => {
+        getNextRestaurants();
         cardOverlay();
 
         setTimeout(() => removeRestaurant(restaurants), 500);

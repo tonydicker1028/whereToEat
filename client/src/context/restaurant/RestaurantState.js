@@ -13,7 +13,6 @@ const RestaurantState = props => {
         restaurants: [],
         restaurantDetails: {},
         nextPageToken: null,
-        nextPageToken: null,
         loading: true,
         allowLocation: false
     };
@@ -29,13 +28,19 @@ const RestaurantState = props => {
         return arr;
     };
 
-    const getNextRestaurants = async (pageToken, arr) => {
-        const restaurantsPageTwo = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${pageToken}&key=${process.env.REACT_APP_API_KEY}`;
+    const getNextRestaurants = async () => {
+        let restaurantsArr;
+        const restaurantsEndPoint = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${state.nextPageToken}&key=${process.env.REACT_APP_API_KEY}`;
 
-        const resTwo = await axios.get(restaurantsPageTwo);
+        const res = await axios.get(restaurantsEndPoint);
+        restaurantsArr = res.data.results;
 
-        arr.push(...resTwo.data.results);
-        return arr;
+        const shuffledArr = shuffleArray(restaurantsArr);
+
+        dispatch({
+            type: GET_RESTAURANTS,
+            payload: [shuffledArr, res.data.next_page_token]
+        });
     };
 
     // Get Restaurants
@@ -76,7 +81,8 @@ const RestaurantState = props => {
                 allowLocation: state.allowLocation,
                 getRestaurants,
                 removeRestaurant,
-                getRestaurantDetails
+                getRestaurantDetails,
+                getNextRestaurants
             }}
         >
             {props.children}
