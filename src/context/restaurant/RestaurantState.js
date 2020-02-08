@@ -8,14 +8,6 @@ import {
     GET_RESTAURANT_DETAIL
 } from '../types';
 
-let googleApiKey;
-
-if (process.env.NODE_ENV !== 'production') {
-    googleApiKey = process.env.REACT_APP_API_KEY;
-} else {
-    googleApiKey = process.env.API_KEY;
-}
-
 const RestaurantState = props => {
     const initialState = {
         restaurants: [],
@@ -24,6 +16,8 @@ const RestaurantState = props => {
         loading: true,
         allowLocation: false
     };
+
+    const googleApiKey = process.env.REACT_APP_API_KEY;
 
     const [state, dispatch] = useReducer(restaurantReducer, initialState);
 
