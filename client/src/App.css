@@ -11,7 +11,6 @@
 
 #restaurant-normal {
     position: relative;
-    min-height: 60vh;
 }
 
 #restaurant-overlay {
@@ -37,4 +36,8 @@
     display: none;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
+}
+
+.restaurant-details {
+    min-height: 20vh;
 }

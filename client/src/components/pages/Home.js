@@ -25,9 +25,11 @@ const Home = () => {
     }, []);
 
     return (
-        <div className='container card mt-5 py-2' id='restaurant-normal'>
-            <Restaurant />
-        </div>
+        <>
+            <div className='container card mt-5 py-2' id='restaurant-normal'>
+                <Restaurant />
+            </div>
+        </>
     );
 };
 

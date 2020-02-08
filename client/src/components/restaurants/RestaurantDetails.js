@@ -35,7 +35,7 @@ const RestaurantDetails = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='row row-cols-3 mt-3'>
+                    <div className='row row-cols-3 mt-4'>
                         <div className='col text-center'>
                             <div className='font-weight-bold'>Price</div>
                             <div>
