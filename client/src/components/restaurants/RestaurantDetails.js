@@ -11,7 +11,7 @@ const RestaurantDetails = () => {
         <div className='card my-4 restaurant-details'>
             {restaurantDetails != null && (
                 <>
-                    <div className='row'>
+                    <div className='row row-cols-3'>
                         <div className='col text-center '>
                             <div className='font-weight-bold'>Address</div>
                             <div>{restaurantDetails.formatted_address}</div>
@@ -35,7 +35,7 @@ const RestaurantDetails = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='row'>
+                    <div className='row row-cols-3 mt-3'>
                         <div className='col text-center'>
                             <div className='font-weight-bold'>Price</div>
                             <div>
