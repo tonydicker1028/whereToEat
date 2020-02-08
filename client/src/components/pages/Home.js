@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 
 import Restaurant from '../restaurants/Restaurant';
+import LocationError from '../layout/LocationError';
 
 import RestaurantContext from '../../context/restaurant/restaurantContext';
 
@@ -27,7 +28,11 @@ const Home = () => {
     return (
         <>
             <div className='container card mt-5 py-2' id='restaurant-normal'>
-                <Restaurant />
+                {restaurantContext.allowLocation ? (
+                    <Restaurant />
+                ) : (
+                    <LocationError />
+                )}
             </div>
         </>
     );

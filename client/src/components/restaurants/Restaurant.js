@@ -11,13 +11,18 @@ import RestaurantContext from '../../context/restaurant/restaurantContext';
 const Restaurant = () => {
     const restaurantContext = useContext(RestaurantContext);
 
-    const { restaurants, getRestaurantDetails, loading } = restaurantContext;
+    const {
+        restaurants,
+        getRestaurantDetails,
+        loading,
+        allowLocation
+    } = restaurantContext;
 
     if (restaurants.length > 0) {
         getRestaurantDetails(restaurants[0].place_id);
     }
 
-    if (loading) {
+    if (loading && allowLocation) {
         return <Spinner />;
     }
 

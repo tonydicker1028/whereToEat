@@ -10,7 +10,8 @@ export default (state, action) => {
             return {
                 ...state,
                 restaurants: action.payload,
-                loading: false
+                loading: false,
+                allowLocation: true
             };
         case REMOVE_RESTAURANT:
             return {
