@@ -8,6 +8,14 @@ import {
     GET_RESTAURANT_DETAIL
 } from '../types';
 
+let googleApiKey;
+
+if (process.env.NODE_ENV !== 'production') {
+    googleApiKey = process.env.REACT_APP_API_KEY;
+} else {
+    googleApiKey = process.env.API_KEY;
+}
+
 const RestaurantState = props => {
     const initialState = {
         restaurants: [],
@@ -30,7 +38,7 @@ const RestaurantState = props => {
 
     const getNextRestaurants = async () => {
         let restaurantsArr;
-        const restaurantsEndPoint = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${state.nextPageToken}&key=${process.env.REACT_APP_API_KEY}`;
+        const restaurantsEndPoint = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${state.nextPageToken}&key=${googleApiKey}`;
 
         const res = await axios.get(restaurantsEndPoint);
         restaurantsArr = res.data.results;
@@ -46,7 +54,7 @@ const RestaurantState = props => {
     // Get Restaurants
     const getRestaurants = async latLong => {
         let restaurantsArr;
-        const restaurantsEndPoint = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latLong}&radius=1500&type=restaurant&key=${process.env.REACT_APP_API_KEY}`;
+        const restaurantsEndPoint = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latLong}&radius=1500&type=restaurant&key=${googleApiKey}`;
         const res = await axios.get(restaurantsEndPoint);
         restaurantsArr = res.data.results;
 
@@ -61,7 +69,7 @@ const RestaurantState = props => {
     // Get Restaurant Details
     const getRestaurantDetails = async place_id => {
         const res = await axios.get(
-            `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&fields=website,formatted_phone_number,formatted_address,price_level,rating,user_ratings_total&key=${process.env.REACT_APP_API_KEY}`
+            `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&fields=website,formatted_phone_number,formatted_address,price_level,rating,user_ratings_total&key=${googleApiKey}`
         );
 
         dispatch({ type: GET_RESTAURANT_DETAIL, payload: res.data.result });
