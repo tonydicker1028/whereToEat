@@ -12,6 +12,7 @@ const RestaurantState = props => {
     const initialState = {
         restaurants: [],
         restaurantDetails: {},
+        nextPageToken: null,
         loading: true,
         allowLocation: false
     };
@@ -29,12 +30,24 @@ const RestaurantState = props => {
 
     // Get Restaurants
     const getRestaurants = async latLong => {
+        let restaurantsArr;
         const restaurantsEndPoint = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latLong}&radius=1500&type=restaurant&key=${process.env.REACT_APP_API_KEY}`;
         const res = await axios.get(restaurantsEndPoint);
+        restaurantsArr = res.data.results;
 
-        let resultsArr = res.data.results;
+        const restaurantsPageTwo = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${process.env.REACT_APP_API_KEY}`;
 
-        const shuffledArr = shuffleArray(resultsArr);
+        const resTwo = await axios.get(restaurantsPageTwo);
+
+        restaurantsArr.push(...resTwo.data.results);
+
+        const restaurantsPageThree = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${resTwo.data.next_page_token}&key=${process.env.REACT_APP_API_KEY}`;
+
+        const resThree = await axios.get(restaurantsPageThree);
+
+        restaurantsArr.push(...resThree.data.results);
+
+        const shuffledArr = shuffleArray(restaurantsArr);
 
         dispatch({ type: GET_RESTAURANTS, payload: shuffledArr });
     };
@@ -57,6 +70,7 @@ const RestaurantState = props => {
             value={{
                 restaurants: state.restaurants,
                 restaurantDetails: state.restaurantDetails,
+                nextPageToken: state.nextPageToken,
                 loading: state.loading,
                 allowLocation: state.allowLocation,
                 getRestaurants,
